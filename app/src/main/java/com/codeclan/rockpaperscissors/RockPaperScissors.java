@@ -17,7 +17,7 @@ public class RockPaperScissors {
 
     }
 
-    public String randomSelection(){
+    public String randomSelection() {
         Collections.shuffle(this.selectionArray);
         return selectionArray.get(0);
     }
@@ -27,9 +27,9 @@ public class RockPaperScissors {
         String selections;
         String result;
         result = "";
-        selections = player.getSelection().toString()+ " " + computer.getSelection().toString();
+        selections = player.getSelection().toString() + " " + computer.getSelection().toString();
         switch (selections) {
-            case  "rock scissor":
+            case "rock scissor":
                 result = "Player wins!";
                 break;
             case "rock paper":
@@ -39,7 +39,6 @@ public class RockPaperScissors {
                 result = "Player wins!";
                 break;
             case "paper scissor":
-                result = "Computer wins!";
                 break;
             case "scissor rock":
                 result = "Computer wins!";
@@ -52,5 +51,26 @@ public class RockPaperScissors {
 
         }
         return result;
+    }
+
+
+    public int changeScoreComputerScore(Integer computerscore, String string) {
+
+
+        if (string == "Computer wins!" || string == "It's a draw!") {
+            return computerscore + 1;
+        }
+            return computerscore;
+
+    }
+
+
+    public int changeScorePlayerScore(Integer playerscore, String string) {
+
+
+        if (string == "Player wins!" || string == "It's a draw!") {
+            return  playerscore + 1;
+        }
+        return playerscore;
     }
 }

@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     Button paper;
     Button scissor;
     Button rock;
+    Integer playerScores;
+    Integer computerScores;
 
 
     @Override
@@ -25,12 +27,23 @@ public class MainActivity extends AppCompatActivity {
         rock = findViewById(R.id.rock);
 
 
+        playerScores = 0;
+        computerScores = 0;
+        Intent intent = getIntent();
+        if (intent.getExtras() != null) {
+            Bundle extras = intent.getExtras();
+            playerScores = extras.getInt("playerScores");
+            computerScores = extras.getInt("computerScores");
+        }
+
     }
 
     public void onPaperButtonClick(View view){
         String selectionPaper = "paper";
         Intent intentPaper = new Intent(this, ResultsActivity.class);
         intentPaper.putExtra("selection", selectionPaper);
+        intentPaper.putExtra("playerScores", playerScores);
+        intentPaper.putExtra("computerScores", computerScores);
         startActivity(intentPaper);
     }
 
@@ -38,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         String selectionScissor = "scissor";
         Intent intentScissor = new Intent(this, ResultsActivity.class);
         intentScissor.putExtra("selection", selectionScissor);
+        intentScissor.putExtra("playerScores", playerScores);
+        intentScissor.putExtra("computerScores", computerScores);
         startActivity(intentScissor);
     }
 
@@ -45,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         String selectionRock = "rock";
         Intent intentRock = new Intent(this, ResultsActivity.class);
         intentRock.putExtra("selection", selectionRock);
+        intentRock.putExtra("playerScores", playerScores);
+        intentRock.putExtra("computerScores", computerScores);
         startActivity(intentRock);
     }
 }
